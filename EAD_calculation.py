@@ -97,6 +97,7 @@ add_on = (0.005 * effective_notional_USD) + (0.005 * effective_notional_GBP)
 RC = LOF.calculate_replacement_cost(df_working["mtm_dirty"])
 
 # calculate Exposure at Default (EAD)
-mutiplier = LOF.calculate_multiplier(add_on, df_working["mtm_dirty"], RC)
-EAD =   1.4 * (RC + 1 * add_on)
-print("The Exposure at Default (EAD) is: {:,.2f}".format(EAD))
+if __name__ == '__main__':
+    mutiplier = LOF.calculate_multiplier(add_on, df_working["mtm_dirty"], RC)
+    EAD =   1.4 * (RC + 1 * add_on)
+    print("The Exposure at Default (EAD) is: {:,.2f}".format(EAD))
