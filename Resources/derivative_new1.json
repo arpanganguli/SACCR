@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "name": "Derivatives Data",
+  "description": "A derivative is a contract which derives its value from an underlying reference index, security or asset.",
+  "type": "object",
+  "data": {
+    "id": {
+      "description": "The unique identifier for the derivative within the financial institution.",
+      "type": "string"
+    },
+    "date": {
+      "description": "The observation or effective date for the data in this object. Formatted as YYYY-MM-DDTHH:MM:SSZ in accordance with ISO 8601.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "deal_id": {
+        "description": "The unique identifier used by the financial institution for the deal to which this derivative belongs.",
+        "type": "string"
+    },
+    "asset_class": {
+     "description": "The kind of derivative.",
+      "type": "string", 
+      "enum": ["vanilla_swap", "swaption"]
+    },
+    "currency_code": {
+      "description": "Actual currency of the underlying reference index, security or asset for the derivative in accordance with ISO 4217 standards. It should be consistent with balance, accrued_interest, guarantee_amount and other monetary amounts.",
+      "type": "string",
+      "enum": ["USD", "GBP"]
+    },
+    "end_date": {
+      "description": "YYYY-MM-DDTHH:MM:SSZ in accordance with ISO 8601",
+      "type": "string",
+      "format": "date-time"
+    },
+    "mtm_dirty": {
+      "description": "The mark-to-market value of the derivative including interest. Monetary type represented as a naturally positive integer number of cents/pence.",
+      "type": "integer",
+      "monetary": true
+    },
+    "notional_amount": {
+      "description": "The notional value is the total value with regard to a derivative's underlying index, security or asset at its spot price in accordance with the specifications (i.e. leverage) of the derivative product. Monetary type represented as a naturally positive integer number of cents/pence.",
+      "type": "integer",
+      "monetary": true
+    },
+    "payment_type": {
+      "description": "The type of interest rate paid out.",
+      "type": "string",
+      "enum": ["fixed", "floating"]
+    },
+    "receive_type": {
+      "description": "The type of interest rate received.",
+      "type": "string",
+      "enum": ["fixed", "floating"]
+    },
+    "rate": {
+      "description": "The full interest rate applied to the derivative notional in percentage terms. Note that this therefore includes the base_rate (ie. not the spread).",
+      "type": "number"
+    },
+    "start_date": {
+      "description": "Contract effective or commencement date; security issue date. Format YYYY-MM-DDTHH:MM:SSZ in accordance with ISO 8601.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "type": {
+      "description": "This is the type of the derivative with regards to common regulatory classifications.",
+      "type": "string",
+      "enum": ["vanilla_swap", "swaption"]
+    },
+    "trade_date": {
+      "description": "The timestamp that the trade or financial product terms are agreed. YYYY-MM-DDTHH:MM:SSZ in accordance with ISO 8601.",
+      "type": "string",
+      "format": "date-time"
+      },
+    "value_date": {
+      "description": "The timestamp that the derivative was valued. YYYY-MM-DDTHH:MM:SSZ in accordance with ISO 8601.",
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["id", "date"],
+  "additionalProperties": true
+}

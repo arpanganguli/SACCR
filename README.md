@@ -1,2 +1,2 @@
 # SACCR
-Sample Python calculator to calculate Basel III's new Standardised Approach (SA) for Counterparty Credit Risk (CCR)
+Interest rate calculator based on Basel III's Standardised Approach (SA) for measuring Counterparty Credit Risk (CCR) exposures.
