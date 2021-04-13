@@ -13,6 +13,20 @@ from scipy.stats import norm
 
 # develop functions
 
+def pick_latest_file():
+    """
+    Picks latest file from the Database directory.
+
+    Returns
+    -------
+    Latest file from the Database directory.
+
+    """
+    list_of_files = glob.glob("Database/*.json")
+    latest_file = max(list_of_files, key=os.path.getctime)
+    
+    return latest_file
+
 def generate_dataframe():
     """
     Returns
@@ -20,9 +34,7 @@ def generate_dataframe():
     Reads the latest JSON file from the Database directory and generate resulting dataframe.
 
     """
-    list_of_files = glob.glob("Database/*.json")
-    latest_file = max(list_of_files, key=os.path.getctime)
-
+    latest_file = pick_latest_file()
     file = pd.read_json(latest_file)
     df = pd.json_normalize(file["data"])
     
@@ -39,7 +51,7 @@ def intermediate_replacement_cost(func):
     """
     def wrapper(*args, **kwargs):
         if func(*args, **kwargs) > 0:
-            return func(*args, **kwargs) + 2
+            return func(*args, **kwargs)
         else:
             return 0
     

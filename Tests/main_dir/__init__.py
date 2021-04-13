@@ -21,6 +21,11 @@ FILES_LIST = [f for f in filenames if f.endswith(".json")]
 
 # develop functions
 
+def pick_latest_file():
+    TESTDIR= [FILES_DIR + f for f in FILES_LIST]
+    latest_file = max(TESTDIR, key=os.path.getctime)
+    return latest_file
+
 def generate_dataframe():
     """
     Returns
@@ -28,9 +33,8 @@ def generate_dataframe():
     Reads the latest JSON file from the Database directory and generate resulting dataframe.
 
     """
-    list_of_files = glob.glob("Database/*.json")
-    latest_file = max(list_of_files, key=os.path.getctime)
-
+    latest_file = pick_latest_file()
+    
     file = pd.read_json(latest_file)
     df = pd.json_normalize(file["data"])
     
