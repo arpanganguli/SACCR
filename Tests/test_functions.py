@@ -14,7 +14,7 @@ import sys
 import os
 from math import exp, log, sqrt
 from scipy.stats import norm
-from main_dir import (
+from __init__ import (
     pick_latest_file,
     generate_dataframe, 
     intermediate_replacement_cost, 
@@ -37,7 +37,7 @@ class TestSum(unittest.TestCase):
         """
         max = FILES_LIST[0]
         for f in FILES_LIST:
-            if time.ctime(os.path.getctime(os.path.join(FILES_DIR, f))) > time.ctime(os.path.getctime(os.path.join(FILES_DIR, max))):
+            if os.path.getctime(os.path.join(FILES_DIR, f)) > os.path.getctime(os.path.join(FILES_DIR, max)):
                 max = f
         
         max = FILES_DIR + max
