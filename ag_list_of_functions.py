@@ -182,6 +182,6 @@ def calculate_effective_notional(first_value, second_value):
     """
     first_component = first_value.sum()
     second_component = 1.4*sum(a * b for a, b in zip(second_value, second_value[1:]))
-    effective_notional = first_component  + second_component
+    effective_notional = first_component + second_component
     
     return effective_notional 
