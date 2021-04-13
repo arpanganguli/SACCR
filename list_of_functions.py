@@ -28,6 +28,39 @@ def generate_dataframe():
     
     return(df)
 
+def intermediate_replacement_cost(func):
+    """
+    Provides interim steps to calculate Replacement Cost (RC) component of Exposure at Default (EAD).
+
+    Returns
+    -------
+    Wrapper object.
+
+    """
+    def wrapper(*args, **kwargs):
+        if func(*args, **kwargs) > 0:
+            return func(*args, **kwargs) + 2
+        else:
+            return 0
+    
+    return wrapper
+
+@intermediate_replacement_cost
+def calculate_replacement_cost(market_value):
+    """
+    Calculates the replacement cost component of EAD.
+
+    Parameters
+    ----------
+    V : Calculates Replacement Cost (RC) component of Exposure at Default (EAD)
+
+    Returns
+    -------
+    Replacement Cost (RC).
+
+    """
+    return market_value.sum()
+
 
 def calculate_market_value(value):
     """
@@ -45,21 +78,6 @@ def calculate_market_value(value):
     market_value = value.sum()
     
     return market_value
-
-def calculate_replacement_cost(value):
-    """
-    Calculates Replacement Cost (RC) component of Exposure at Default (EAD).
-
-    Returns
-    -------
-    Replacement Cost (RC).
-
-    """
-    market_value = calculate_market_value(value)
-    if market_value > 0:
-        return market_value
-    else:
-        return 0
 
 def calculate_multiplier(aggregate_add_on, value, RC):
     """
@@ -133,3 +151,25 @@ def calculate_supervisory_delta_call(vol=0.5, price=0.06, strike=0.05, time=1):
     denom = vol * sqrt(time)           
     delta = round(norm.cdf(num/denom), 2)
     return delta
+
+def calculate_effective_notional(first_value, second_value):
+    """
+    Calculates effective notional amount for each hedging set
+
+    Parameters
+    ----------
+    first_value : The square of sum of individual hedging currencies.
+        DESCRIPTION. Individual hedging currencies are squared and then summed up for the first component.
+    second_value : The sum of individual hedging currencies.
+        DESCRIPTION. Individual hedging currencies are summed up and then multiplied by 1.4 for the second component.
+
+    Returns
+    -------
+    Effective notional amount.
+
+    """
+    first_component = first_value.sum()
+    second_component = 1.4*sum(a * b for a, b in zip(second_value, second_value[1:]))
+    effective_notional = first_component  + second_component
+    
+    return effective_notional 

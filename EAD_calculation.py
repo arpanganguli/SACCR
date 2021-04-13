@@ -82,13 +82,8 @@ df_hedging_set["sum^2"] = pow(df_hedging_set["sum"], 2)
 df_hedging_set_USD = df_hedging_set[df_hedging_set["hedging_set"] == "USD"]
 df_hedging_set_GBP = df_hedging_set[df_hedging_set["hedging_set"] == "GBP"]
 
-first_component_USD = df_hedging_set_USD["sum^2"].sum()
-second_component_USD = 1.4*sum(a * b for a, b in zip(df_hedging_set_USD["sum"], df_hedging_set_USD["sum"][1:]))
-effective_notional_USD = first_component_USD + second_component_USD
-
-first_component_GBP = df_hedging_set_GBP["sum^2"].sum()
-second_component_GBP = 1.4*sum(a * b for a, b in zip(df_hedging_set_GBP["sum"], df_hedging_set_GBP["sum"][1:]))
-effective_notional_GBP = first_component_GBP + second_component_GBP
+effective_notional_USD = LOF.calculate_effective_notional(df_hedging_set_USD["sum^2"], df_hedging_set_USD["sum"])
+effective_notional_GBP = LOF.calculate_effective_notional(df_hedging_set_GBP["sum^2"], df_hedging_set_GBP["sum"])
 
 # calculate add-on
 add_on = (0.005 * effective_notional_USD) + (0.005 * effective_notional_GBP)
