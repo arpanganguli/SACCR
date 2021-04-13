@@ -7,18 +7,27 @@ Created on Tue Apr 13 16:56:04 2021
 """
 
 import unittest
-from main_dir import sum
+import os
+from main_dir import (
+    generate_dataframe, 
+    intermediate_replacement_cost, 
+    calculate_replacement_cost,
+    calculate_market_value,
+    calculate_multiplier,
+    calculate_supervisory_delta_put,
+    calculate_supervisory_delta_call,
+    calculate_effective_notional,
+    )
 
 class TestSum(unittest.TestCase):
     
-    def check_sum(self):
+    def generate_dataframe(self):
         """
-        Checks sum
+        Checks if the function picks up the latest file.
 
         """
-        data = [1, 2, 3]
-        result = sum(data)
-        self.assertEqual(result, 6)
+        
+        
         
 
 if __name__ == "__main__":
