@@ -7,7 +7,12 @@ Created on Tue Apr 13 16:56:04 2021
 """
 
 import unittest
+import pandas as pd
+import glob
+import sys
 import os
+from math import exp, log, sqrt
+from scipy.stats import norm
 from main_dir import (
     generate_dataframe, 
     intermediate_replacement_cost, 
@@ -17,6 +22,9 @@ from main_dir import (
     calculate_supervisory_delta_put,
     calculate_supervisory_delta_call,
     calculate_effective_notional,
+    FILES_LIST,
+    FILES_DIR,
+    FILE_NAMES
     )
 
 class TestSum(unittest.TestCase):
@@ -26,9 +34,7 @@ class TestSum(unittest.TestCase):
         Checks if the function picks up the latest file.
 
         """
-        
-        
-        
-
+        print(FILES_LIST)
+            
 if __name__ == "__main__":
     unittest.main()

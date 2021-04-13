@@ -6,7 +6,7 @@ Created on Sun Apr 11 20:58:18 2021
 @author: arpanganguli
 """
 # import packages
-import list_of_functions as LOF
+import ag_list_of_functions as LOF
 from math import exp
 import pandas as pd
 import datetime

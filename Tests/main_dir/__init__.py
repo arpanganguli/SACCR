@@ -11,6 +11,14 @@ import os
 from math import exp, log, sqrt
 from scipy.stats import norm
 
+HOME = os.path.dirname(os.getcwd())
+FILES_DIR = os.path.join(HOME, "Database/")
+print(FILES_DIR)
+
+_, _, filenames = next(os.walk(FILES_DIR), (None, None, []))
+FILES_LIST = [f for f in filenames if f.endswith(".json")]
+
+
 # develop functions
 
 def generate_dataframe():
@@ -20,7 +28,7 @@ def generate_dataframe():
     Reads the latest JSON file from the Database directory and generate resulting dataframe.
 
     """
-    list_of_files = glob.glob("Database/*")
+    list_of_files = glob.glob("Database/*.json")
     latest_file = max(list_of_files, key=os.path.getctime)
 
     file = pd.read_json(latest_file)

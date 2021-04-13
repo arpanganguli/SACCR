@@ -20,7 +20,7 @@ def generate_dataframe():
     Reads the latest JSON file from the Database directory and generate resulting dataframe.
 
     """
-    list_of_files = glob.glob("Database/*")
+    list_of_files = glob.glob("Database/*.json")
     latest_file = max(list_of_files, key=os.path.getctime)
 
     file = pd.read_json(latest_file)
