@@ -17,7 +17,7 @@ from faker import Faker
 import os.path
 
 
-fire_schemas = ["Resources/derivative_new1.json"]
+fire_schemas = ["Resources/derivative.json"]
 WRITE_PATH = "Database/"
 fake = Faker()
 
