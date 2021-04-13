@@ -103,6 +103,7 @@ def calculate_multiplier(aggregate_add_on, value, RC):
     market_value = calculate_market_value(value)
     if RC > 0:
         multiplier = 1
+        return multiplier
     else:
         floor = 0.05
         aggregate_add_on = 0.3

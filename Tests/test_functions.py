@@ -7,23 +7,13 @@ Created on Tue Apr 13 16:56:04 2021
 """
 
 import unittest
-import pandas as pd
-import time
-import glob
-import sys
 import os
-from math import exp, log, sqrt
-from scipy.stats import norm
-from __init__ import (
+import pandas as pd
+from init_dir import (
     pick_latest_file,
-    generate_dataframe, 
-    intermediate_replacement_cost, 
-    calculate_replacement_cost,
-    calculate_market_value,
-    calculate_multiplier,
     calculate_supervisory_delta_put,
     calculate_supervisory_delta_call,
-    calculate_effective_notional,
+    calculate_multiplier,
     FILES_DIR,
     FILES_LIST
     )
@@ -63,6 +53,18 @@ class TestSum(unittest.TestCase):
         
         self.assertEqual(SDP, -0.27)
         
+    def test_calculate_multiplier(self):
+        """
+        Checks if the multiplier is returning relevant values.
+
+        """
+        RC = 5
+        value = pd.DataFrame([1, 2, 3])
+        aggregate_add_on = 1.4
+        
+        mult = calculate_multiplier(aggregate_add_on=aggregate_add_on, value=value, RC=RC)
+        
+        self.assertEqual(mult, 1)
     
 if __name__ == "__main__":
     unittest.main()

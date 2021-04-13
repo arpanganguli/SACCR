@@ -6,7 +6,6 @@ Created on Tue Apr 13 16:55:11 2021
 @author: arpanganguli
 """
 import pandas as pd
-import glob
 import os
 from math import exp, log, sqrt
 from scipy.stats import norm
@@ -103,9 +102,9 @@ def calculate_multiplier(aggregate_add_on, value, RC):
     market_value = calculate_market_value(value)
     if RC > 0:
         multiplier = 1
+        return multiplier
     else:
         floor = 0.05
-        aggregate_add_on = 0.3
         multiplier = floor + (1 - floor) * exp(market_value / (2 * (1 - floor) * aggregate_add_on))
         if multiplier > 1:
             return 1
