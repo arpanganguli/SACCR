@@ -12,5 +12,6 @@ There are three components of the repository:
  - **EAD Calculation:** Type `python3 ag_EAD_calculation.py`. This will calculate the EAD and will display the result that we seek through this calculator.
  - **Testing:** Go to the testing folder by typing `cd Tests`and then typing `python3 test_functions.py`.
 
-## Note
-- At present, it calculates EAD only for vanilla swaps and swaptions.
+## Assumptions
+- The hedging set consists only of interest rate swaps and swaptions for derivatives and USD and GBP for currencies.
+- The netting set is not subject to a margin agreement and there is no exchange of collateral (independent amount/initial margin) at inception.
