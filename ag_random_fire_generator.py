@@ -8,7 +8,6 @@ Created on Sun Apr 11 16:47:12 2021
 
 import argparse
 import json
-import iso3166
 import logging
 import random
 import timeit
