@@ -11,3 +11,6 @@ There are three components of the repository:
 	This file is built on top of the [random_fire_generator.py](https://github.com/SuadeLabs/fire/blob/master/random_fire_generator.py) file with some modifications.
  - **EAD Calculation:** Type `python3 ag_EAD_calculation.py`. This will calculate the EAD and will display the result that we seek through this calculator.
  - **Testing:** Go to the testing folder by typing `cd Tests`and then typing `python3 test_functions.py`.
+
+## Note
+- At present, it calculates EAD only for vanilla swaps and swaptions.
