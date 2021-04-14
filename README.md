@@ -13,7 +13,7 @@ There are three components of the repository:
  - **Testing:** Go to the testing folder by typing `cd Tests`and then typing `python3 test_functions.py`.
 
 ## Addendum
-There is an additional file called ag_list_of_functions.py. This file contains the all the relevant functions required for EAD calculation. These functions are invoked at relevant times by the ag_EAD_calculation.py file.
+There is an additional file called `ag_list_of_functions.py`. This file contains the all the relevant functions required for EAD calculation. These functions are invoked at relevant times by the `ag_EAD_calculation.py` file.
 
 ## Assumptions
 - The hedging set consists only of interest rate swaps and swaptions for derivatives and USD and GBP for currencies.
