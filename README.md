@@ -2,7 +2,7 @@
 ## About SACCR
 SACCR is an interest rate calculator based on Basel III's [Standardised Approach (SA) for measuring Counterparty Credit Risk (CCR) exposures](https://www.bis.org/publ/bcbs279.pdf).
 
-## How to run this repository**
+## How to run this repository
 First, clone the repository and then change your directory to the repository on your hard drive by typing `cd [path_to_your_repository_on_hard_drive]` at the command prompt in the Mac/Linux Terminal or in the Windows Command Window or PowerShell.
 
 There are three components of the repository:
